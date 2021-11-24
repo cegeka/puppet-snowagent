@@ -33,6 +33,7 @@ class snowagent::service inherits snowagent {
 
       $timer = {
         'snowagent.timer' => {
+          service_unit => 'snowagent',
           timer_content => template("snowagent/snowagent.timer.erb"),
           service_source => "puppet:///modules/snowagent/systemd/snowagent.service",
           active => $active,
