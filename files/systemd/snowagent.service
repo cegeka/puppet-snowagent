@@ -1,0 +1,13 @@
+# This snow agent service is managed by puppet
+#
+[Unit]
+Description=Snow software asset management
+Wants=snowagent.timer
+
+[Service]
+Type=oneshot
+ExecStart=/opt/snow/snowagent -w /opt/snow/
+Slice=snowagent.slice
+
+[Install]
+WantedBy=multi-user.target

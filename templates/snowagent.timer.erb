@@ -1,0 +1,12 @@
+# This snow agent timer is managed by puppet
+#
+[Unit]
+Description=Snow software asset management timer
+Requires=snowagent.service
+
+[Timer]
+Unit=snowagent.service
+OnCalendar=*-*-* 21:00:00
+
+[Install]
+WantedBy=timers.target
