@@ -35,6 +35,7 @@ class snowagent(
   String $custom_ca_bundle_path = $snowagent::params::custom_ca_bundle_path,
   Boolean $ssl_certificate_verify = $snowagent::params::ssl_certificate_verify,
   String $java_home_path = $snowagent::params::java_home_path,
+  Array $excludes = $snowagent::params::excludes,
 ) inherits snowagent::params {
 
   include snowagent::install

@@ -43,15 +43,10 @@
 			<!-- Oracle audit files can be numerous. -->
 			<Path>*/oracle/*/audit*</Path>
 
-			<!-- Excluded by CEGEKA: Jenkins data dirs can be numerous too for which the SNOW agent run can fail. -->
-			<Path>/data/jenkins*</Path>
-			<Path>/data/backup/github/cegeka*</Path>
-			<Path>/data/nexus*</Path>
-			<Path>/u01*</Path>
-			<Path>/u02*</Path>
-			<Path>/u03*</Path>
-			<Path>/u04*</Path>
-
+			<!-- Excluded data dirs can container a high volume of files which causes the SNOW agent to fail. -->
+<%- scope.lookupvar("snowagent::excludes").each do |exclude| -%>
+			<Path><%= exclude %></Path>
+<%- end -%>
 
 			<!-- Common non-relevant file extensions -->
 			<Path>*.au</Path>
