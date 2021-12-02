@@ -26,7 +26,7 @@ class snowagent::params {
       $systemd_slice_cpu = '25%'
       $systemd_slice_memory = '25%'
       $user = 'root'
-      $package_ensure = present
+      $package_ensure = 'latest'
       $package_name = 'snowagent'
       $package_release = 6
       $install_dir = '/opt/snow'
