@@ -14,7 +14,7 @@ class snowagent::params {
         'weekday'  => undef,
         'monthday' => undef,
         'month'    => undef,
-        'hour'     => 21,
+        'hour'     => 19,
         'minute'   => 0,
       }
       $ensure_cron            = present
