@@ -11,7 +11,7 @@ class snowagent::service inherits snowagent {
 
   cron { 'snow-client-cronjob':
     ensure   => $snowagent::ensure_cron,
-    command  => "/bin/nice -n 10 /bin/bash -l -c \"/bin/sleep $(/bin/shuf -i 1-600 -n 1) && /opt/snow/snowagent -w /opt/snow/\" >/dev/null 2>&1",
+    command  => "/bin/nice -n ${snowagent::cron_nice} /bin/bash -l -c \"/bin/sleep $(/bin/shuf -i 1-600 -n 1) && /opt/snow/snowagent -w /opt/snow/\" >/dev/null 2>&1",
     hour     => $snowagent::cron_schedule['hour'],
     minute   => $snowagent::cron_schedule['minute'],
     monthday => $snowagent::cron_schedule['monthday'],
