@@ -6,15 +6,15 @@
 class snowagent::config inherits snowagent {
 
   file { $snowagent::install_dir:
-    ensure  => directory,
-    mode    => '0750',
+    ensure => directory,
+    mode   => '0750',
   }
 
   file { "${snowagent::install_dir}/${snowagent::config_name}":
     ensure  => file,
-    content => template("snowagent/snowagent.conf.erb"),
+    content => template('snowagent/snowagent.conf.erb'),
     mode    => '0640',
-    replace => $replace_config
+    replace => $snowagent::replace_config
   }
 
   file_line { 'snow-client-default-cronjob':
