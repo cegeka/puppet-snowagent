@@ -14,6 +14,7 @@ class snowagent::config inherits snowagent {
     ensure  => file,
     content => template("snowagent/snowagent.conf.erb"),
     mode    => '0640',
+    replace => $replace_config
   }
 
   file_line { 'snow-client-default-cronjob':

@@ -37,6 +37,7 @@ class snowagent::params {
       $log_level              = 'info'
       $java_home_path         = '/usr/bin/java'
       $excludes               = []
+      $replace_config         = false
     }
     default: {
       fail("Module '${module_name}' is not supported on OS: '${os_name}', family: '${os_family}'")
