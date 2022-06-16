@@ -19,7 +19,7 @@ class snowagent::config inherits snowagent {
   }
 
   exec { 'check_if_snowconfig_is_default':
-    command  => 'rm /opt/snow/snowagent.config',
+    command  => "rm ${snowagent::install_dir}/${snowagent::config_name}",
     onlyif   => "grep -q 'SSC_TEMPLATE' ${snowagent::install_dir}/${snowagent::config_name}",
     path     => '/bin'
   }
