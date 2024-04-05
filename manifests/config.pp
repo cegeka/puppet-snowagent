@@ -15,13 +15,6 @@ class snowagent::config inherits snowagent {
     content => template('snowagent/snowagent.conf.erb'),
     mode    => '0640',
     replace => $snowagent::replace_config,
-    require => Exec['check_if_snowconfig_is_default']
-  }
-
-  exec { 'check_if_snowconfig_is_default':
-    command  => "rm ${snowagent::install_dir}/${snowagent::config_name}",
-    onlyif   => "grep -q 'SSC_TEMPLATE' ${snowagent::install_dir}/${snowagent::config_name}",
-    path     => '/bin'
   }
 
   file_line { 'snow-client-default-cronjob':
