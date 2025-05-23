@@ -26,15 +26,15 @@ class snowagent::service inherits snowagent {
   case $::os[release][major] {
     '6': {}
     default: {
-      file { "/etc/systemd/system/snowagent.service.d":
+      file { '/etc/systemd/system/snowagent.service.d':
         ensure => directory,
       }
 
       $timer = {
         'snowagent.timer' => {
           service_unit   => 'snowagent.service',
-          timer_content  => template("snowagent/snowagent.timer.erb"),
-          service_source => "puppet:///modules/snowagent/systemd/snowagent.service",
+          timer_content  => template('snowagent/snowagent.timer.erb'),
+          service_source => 'puppet:///modules/snowagent/systemd/snowagent.service',
           active         => $active,
           enable         => $active,
           ensure         => $snowagent::ensure_systemd,
@@ -42,9 +42,9 @@ class snowagent::service inherits snowagent {
       }
       create_resources(systemd::timer, $timer)
 
-      file { "/etc/systemd/system/snowagent.slice":
+      file { '/etc/systemd/system/snowagent.slice':
         ensure  => $snowagent::ensure_systemd,
-        content => template("snowagent/snowagent.slice.erb"),
+        content => template('snowagent/snowagent.slice.erb'),
         notify  => Exec['snowagent-systemd_reload'],
       }
 
