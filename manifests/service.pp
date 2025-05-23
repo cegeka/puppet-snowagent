@@ -23,7 +23,7 @@ class snowagent::service inherits snowagent {
     'absent': { $active = false }
     default: {}
   }
-  case $::os[release][major] {
+  case $facts['os']['release']['major'] {
     '6': {}
     default: {
       file { '/etc/systemd/system/snowagent.service.d':
